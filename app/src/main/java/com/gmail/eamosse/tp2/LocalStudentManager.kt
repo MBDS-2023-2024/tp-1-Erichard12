@@ -2,11 +2,9 @@ package com.gmail.eamosse.tp2
 
 
 class LocalStudentManager : StudentManager {
-// TODO 1. Implement all methods so that the class is conformed to the interface
-    // TODO 2: init the class with a list of 10 students every time a new instance is created;
-    // Use the following
 
-    private var Etud = mutableListOf(
+
+    private var etudiants = mutableListOf(
     Etudiant(name = "John1", code = "A1", sexe = "M", address = "Lilles", age = 20),
     Etudiant(name = "John2", code = "A2", sexe = "F", address = "Lilles", age = 30),
     Etudiant(name = "John3", code = "A3", sexe = "F", address = "Lilles", age = 41),
@@ -22,39 +20,39 @@ class LocalStudentManager : StudentManager {
 
 
     override fun listOf10(): List<Etudiant> {
-      return Etud
+      return etudiants
     }
 
     override fun sortAgeAscDesc(type: String): List<Etudiant> {
         return when (type) {
-            "ASC" -> Etud.sortedBy{ it.age }
-            "DESC" -> Etud.sortedByDescending{ it.age }
-            else -> Etud
+            "ASC" -> etudiants.sortedBy{ it.age }
+            "DESC" -> etudiants.sortedByDescending{ it.age }
+            else -> etudiants
         }
     }
 
     override fun groupBySex(): Map<String, List<Etudiant>> {
-        return Etud.groupBy{ it.sexe }
+        return etudiants.groupBy{ it.sexe }
     }
 
     override fun boysOrGirls(sexe: String): List<Etudiant> {
-        return Etud.filter{ it.sexe == "F" }
+        return etudiants.filter{ it.sexe == sexe }
     }
 
     override fun onlyNames(): List<String> {
-        return Etud.map{ it.name}
+        return etudiants.map{ it.name}
     }
 
     override fun deleteBySex(sex: String) {
-        Etud.removeAll{ it.sexe == sex }
+        etudiants.removeAll{ it.sexe == sex }
     }
 
     override fun reverse(): List<Etudiant> {
-        return Etud.reversed()
+        return etudiants.reversed()
     }
 
     override fun clear() {
-         Etud.clear()
+         etudiants.clear()
     }
 }
 
